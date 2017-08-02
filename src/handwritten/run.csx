@@ -5,6 +5,7 @@ using System.Configuration;
 
 private static readonly string key = ConfigurationManager.AppSettings["SubscriptionKey"];
 //private static readonly string endpoint = ConfigurationManager.AppSettings["Url"];
+// private static readonly string endpoint = ConfigurationManager.AppSettings["QueryParams"];
 
 public async static Task<string> Run(Stream myBlob, string name, TraceWriter log)
 {
