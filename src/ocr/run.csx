@@ -23,7 +23,8 @@ public async static Task<string> Run(Stream input, string filename, TraceWriter 
     
     // Change this to hit a different vision endpoint 
     // Ex: for computer vision : "/analyze?visualFeatures=ImageType,Faces,Adult,Categories,Color,Tags,Description"
-    var queryParams = "ocr?language=en&detectOrientation=true";var results = await client.PostAsync(endpoint + queryParams, payload);
+    var queryParams = "ocr?language=en&detectOrientation=true";
+    var results = await client.PostAsync(endpoint + queryParams, payload);
 
     log.Info("Status code " + results.StatusCode);
 
