@@ -1,7 +1,7 @@
 {
     "bindings": [
         {
-            "name": "input",
+            "name": "myBlob",
             "type": "blobTrigger",
             "path": "source/{filename}",
             "direction": "in",
