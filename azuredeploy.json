@@ -27,12 +27,19 @@
             "metadata": {
                 "description": "Endpoint for Vision API Microsoft Cognitive Services."
             }
+        },
+        "queryparams": {
+            "type": "string",
+            "defaultValue": "ocr?language=en&detectOrientation=true",
+            "metadata": {
+                "description": "Query params for OCR Microsoft Cognitive Services Endpoint."
+            }
         }
     },
     "variables": {
         "storageName": "[concat('function', uniqueString(parameters('siteName')))]",
         "contentShareName": "[toLower(parameters('siteName'))]",
-        "repoUrl": "https://github.com/nastassiar/RecognizeTextFunction",
+        "repoUrl": "https://github.com/nastassiar/CognitiveServicesOCRFunction",
         "branch": "master"
     },
     "resources": [

@@ -5,6 +5,7 @@ using System.Configuration;
 
 private static readonly string key = ConfigurationManager.AppSettings["SubscriptionKey"];
 private static readonly string endpoint = ConfigurationManager.AppSettings["Url"];
+private static readonly string queryParams = ConfigurationManager.AppSettings["QueryParams"];
 
 public async static Task<string> Run(Stream myBlob, string name, TraceWriter log)
 {
@@ -17,8 +18,7 @@ public async static Task<string> Run(Stream myBlob, string name, TraceWriter log
 
     var payload = new ByteArrayContent(array);
     payload.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/octet-stream");
-
-    var results = await client.PostAsync(endpoint + "/analyze?visualFeatures=ImageType,Faces,Adult,Categories,Color,Tags,Description", payload);
+    var results = await client.PostAsync(endpoint + queryParams, payload);
 
     log.Info("Status code " + results.StatusCode);
 
