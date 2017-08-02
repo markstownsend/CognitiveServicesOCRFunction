@@ -20,8 +20,10 @@ public async static Task<string> Run(Stream myBlob, string name, TraceWriter log
     payload.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/octet-stream");
 
     var endpoint = "https://westus.api.cognitive.microsoft.com/vision/v1.0/";
-    var queryParams = "ocr?language=en&detectOrientation=true";// Swap to do do image analysis : "/analyze?visualFeatures=ImageType,Faces,Adult,Categories,Color,Tags,Description"
-    var results = await client.PostAsync(endpoint + queryParams, payload);
+    
+    // Change this to hit a different vision endpoint 
+    // Ex: for computer vision : "/analyze?visualFeatures=ImageType,Faces,Adult,Categories,Color,Tags,Description"
+    var queryParams = "ocr?language=en&detectOrientation=true";var results = await client.PostAsync(endpoint + queryParams, payload);
 
     log.Info("Status code " + results.StatusCode);
 
