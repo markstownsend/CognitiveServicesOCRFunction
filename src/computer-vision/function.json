@@ -1,0 +1,19 @@
+{
+    "bindings": [
+        {
+            "name": "input",
+            "type": "blobTrigger",
+            "path": "source/{filename}",
+            "direction": "in",
+            "connection": "Storage"
+        },
+        {
+            "name": "$return",
+            "type": "blob",
+            "path": "destination/{filename}",
+            "direction": "out",
+            "connection": "Storage"
+        }
+    ],
+    "disabled": false
+}
