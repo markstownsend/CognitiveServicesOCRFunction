@@ -10,7 +10,7 @@
         {
             "name": "$return",
             "type": "blob",
-            "path": "destination/{filename}",
+            "path": "destination/ocr-{filename}",
             "direction": "out",
             "connection": "Storage"
         }
