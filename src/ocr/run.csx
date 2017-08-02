@@ -7,14 +7,14 @@ private static readonly string key = ConfigurationManager.AppSettings["Subscript
 //private static readonly string endpoint = ConfigurationManager.AppSettings["Url"];
 //private static readonly string queryParams = ConfigurationManager.AppSettings["QueryParams"];
 
-public async static Task<string> Run(Stream myBlob, string name, TraceWriter log)
+public async static Task<string> Run(Stream input, string filename, TraceWriter log)
 {
-    log.Info($"Calling computer vision for {name}...");
+    log.Info($"Calling computer vision for {filename}...");
 
     var client = new HttpClient();
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-    var array = await ToByteArrayAsync(myBlob);
+    var array = await ToByteArrayAsync(input);
 
     var payload = new ByteArrayContent(array);
     payload.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/octet-stream");
@@ -30,7 +30,7 @@ public async static Task<string> Run(Stream myBlob, string name, TraceWriter log
     var obj = await results.Content.ReadAsAsync<object>();
     var json = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
 
-    log.Info($"Results for {name} : {json}");
+    log.Info($"Results for {filename} : {json}");
 
     return json;
 }
